@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public enum itemTypes
     {
+        nothing,
         flute,
         harold,
         orange,
@@ -13,21 +14,16 @@ public class Inventory : MonoBehaviour
         shrinkRay
     }
 
-    [HideInInspector]
-    public List<itemTypes> inventory;
+    List<itemTypes> inventory;
 
     void Start()
     {
         inventory = new List<itemTypes>();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void AddItem(itemTypes item)
     {
+        if (item == itemTypes.nothing) return;
         inventory.Add(item);
     }
     public bool CheckItem(itemTypes item)
@@ -35,5 +31,9 @@ public class Inventory : MonoBehaviour
         foreach (itemTypes invItem in inventory)
             if (invItem.Equals(item)) return true;
         return false;
+    }
+    public void RemoveItem(itemTypes item)
+    {
+        inventory.Remove(item);
     }
 }

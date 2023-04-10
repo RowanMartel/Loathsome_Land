@@ -10,14 +10,12 @@ public class GlobalVariables : MonoBehaviour
 
     [HideInInspector]
     public bool talking;
+    [HideInInspector]
+    public bool canTalk;
 
     void Start()
     {
         talking = false;
-    }
-
-    void Update()
-    {
-        
+        canTalk = true;
     }
 }

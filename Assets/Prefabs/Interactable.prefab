@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 2492382646694951190}
   - component: {fileID: 888090102123475319}
   - component: {fileID: 3457962130427403051}
+  - component: {fileID: 6176553542391016364}
   m_Layer: 3
   m_Name: Interactable
   m_TagString: Untagged
@@ -110,6 +111,8 @@ MonoBehaviour:
   dialogueText: []
   dialogueImage: {fileID: 0}
   pickupType: 0
+  talkingAnimation: {fileID: 0}
+  interacted: 0
 --- !u!61 &888090102123475319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -188,3 +191,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6176553542391016364
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4903833902281133179}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

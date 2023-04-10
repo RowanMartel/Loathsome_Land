@@ -13,25 +13,35 @@ public class Interactable : MonoBehaviour
         dialogue
     }
     public interactTypes type;
-    public string infoText;
-    public List<string> dialogueText;
-    public RawImage dialogueImage;
-    public Inventory.itemTypes pickupType;
+
+    [SerializeField]
+    string infoText;
+    [SerializeField]
+    List<string> dialogueText;
+    [SerializeField]
+    Sprite dialogueImage;
+    [SerializeField]
+    Inventory.itemTypes pickupType;
+    [SerializeField]
+    AnimationClip talkingAnimation;
 
     [HideInInspector]
     public bool interacted;
 
     Inventory inv;
+    Info info;
+    Dialogue dialogue;
+    GlobalVariables vars;
+    Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+        vars = FindObjectOfType<GlobalVariables>();
+        dialogue = FindObjectOfType<Dialogue>();
         inv = FindObjectOfType<Inventory>();
+        info = FindObjectOfType<Info>();
         interacted = false;
-    }
-
-    void Update()
-    {
-        
     }
 
     public void Interact()
@@ -54,21 +64,38 @@ public class Interactable : MonoBehaviour
         interacted = true;
     }
 
+    private void Update()
+    {
+        if (!vars.talking) anim.SetBool("Talking", false);
+    }
+
     void InteractNothing()
     {
         Debug.Log("Nothing happened.");
     }
     void InteractPickup()
     {
-        Debug.Log("Picked up a " + pickupType + ".");
         inv.AddItem(pickupType);
+        info.Show("Picked up a " + pickupType + ".");
     }
     void InteractInfo()
     {
-        Debug.Log("Received info: \"" + infoText + "\".");
+        info.Show(infoText);
     }
     void InteractDialogue()
     {
-        Debug.Log("Initiated conversation.");
+        if (!vars.canTalk) return;
+        dialogue.StartConversation(dialogueText, dialogueImage);
+        inv.AddItem(pickupType);
+        anim.SetBool("Talking", true);
+        switch (talkingAnimation.name)
+        {
+            case "EdTalk":
+                anim.SetFloat("AnimID", 0);
+                break;
+            case "HannibalTalk":
+                anim.SetFloat("AnimID", 0.25f);
+                break;
+        }
     }
 }
