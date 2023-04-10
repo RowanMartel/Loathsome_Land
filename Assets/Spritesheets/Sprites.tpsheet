@@ -1,0 +1,69 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:9625a245b473955f5f79f88dc7327319:c22651d8953312ba5e4dd73944c6f8d0:8ab4c75ff4b1bbcb67e3b6e53ae23d58$
+#
+:format=40300
+:texture=Sprites.png
+:size=256x256
+:pivotpoints=enabled
+:borders=disabled
+:alphahandling=ClearTransparentPixels
+
+Other-Bob;0;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Flute;32;248;8;8; 0.5;0.5; 0;0;0;0
+Other-FredTedNedEdJedBread_1;40;224;32;32; 0.5;0.5; 0;0;0;0
+Other-FredTedNedEdJedBread_2;72;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Grave;104;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Hannibal_1;136;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Hannibal_2;168;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Hatless_1;200;224;32;32; 0.5;0.5; 0;0;0;0
+Other-Hatless_2;0;192;32;32; 0.5;0.5; 0;0;0;0
+Other-Hatted_1;32;192;32;32; 0.5;0.5; 0;0;0;0
+Other-Hatted_2;64;192;32;32; 0.5;0.5; 0;0;0;0
+Other-Hole;96;160;32;64; 0.5;0.5; 0;0;0;0
+Other-Orange;128;216;8;8; 0.5;0.5; 0;0;0;0
+Other-Plum;136;216;8;8; 0.5;0.5; 0;0;0;0
+Other-Sam_1;144;160;32;64; 0.5;0.5; 0;0;0;0
+Other-Sam_2;176;160;32;64; 0.5;0.5; 0;0;0;0
+Other-Sam_3;144;160;32;64; 0.5;0.5; 0;0;0;0
+Other-Sam_4;208;160;32;64; 0.5;0.5; 0;0;0;0
+Other-ShrinkRay;240;216;8;8; 0.5;0.5; 0;0;0;0
+Other-Sign;0;144;16;16; 0.5;0.5; 0;0;0;0
+Other-Sydney;16;144;32;16; 0.5;0.5; 0;0;0;0
+Other-Tiny;48;144;32;16; 0.5;0.5; 0;0;0;0
+Player-IdleBackward_1;80;128;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleBackward_2;112;128;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleForward_1;144;128;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleForward_2;176;128;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleLeft_1;208;128;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleLeft_2;0;96;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleRight_1;32;96;32;32; 0.5;0.5; 0;0;0;0
+Player-IdleRight_2;64;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_1;80;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_2;96;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_3;80;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_4;112;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_5;128;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkBackward_6;112;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_1;144;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_2;160;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_3;144;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_4;176;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_5;192;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkForward_6;176;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_1;208;128;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_2;224;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_3;0;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_4;0;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_5;32;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkLeft_6;64;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_1;32;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_2;96;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_3;128;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_4;64;96;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_5;160;64;32;32; 0.5;0.5; 0;0;0;0
+Player-WalkRight_6;192;64;32;32; 0.5;0.5; 0;0;0;0
