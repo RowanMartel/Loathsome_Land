@@ -9,9 +9,10 @@ public class Inventory : MonoBehaviour
         nothing,
         flute,
         harold,
-        orange,
         plum,
-        shrinkRay
+        shrinkRay,
+        hat,
+        hatInfo
     }
 
     List<itemTypes> inventory;

@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
+        if (type == interactTypes.dialogue) anim = GetComponent<Animator>();
         vars = FindObjectOfType<GlobalVariables>();
         dialogue = FindObjectOfType<Dialogue>();
         inv = FindObjectOfType<Inventory>();
@@ -61,26 +61,31 @@ public class Interactable : MonoBehaviour
                 InteractDialogue();
                 break;
         }
-        interacted = true;
     }
 
     private void Update()
     {
-        if (!vars.talking) anim.SetBool("Talking", false);
+        if (!vars.talking && anim) anim.SetBool("Talking", false);
     }
 
     void InteractNothing()
     {
+        if (!vars.canTalk) return;
         Debug.Log("Nothing happened.");
+        interacted = true;
     }
     void InteractPickup()
     {
+        if (!vars.canTalk) return;
         inv.AddItem(pickupType);
         info.Show("Picked up a " + pickupType + ".");
+        interacted = true;
     }
     void InteractInfo()
     {
+        if (!vars.canTalk) return;
         info.Show(infoText);
+        interacted = true;
     }
     void InteractDialogue()
     {
@@ -96,6 +101,16 @@ public class Interactable : MonoBehaviour
             case "HannibalTalk":
                 anim.SetFloat("AnimID", 0.25f);
                 break;
+            case "HaroldHatTalk":
+                anim.SetFloat("AnimID", 0.5f);
+                break;
+            case "HaroldTalk":
+                anim.SetFloat("AnimID", 0.75f);
+                break;
+            case "SamTalk":
+                anim.SetFloat("AnimID", 1);
+                break;
         }
+        interacted = true;
     }
 }
