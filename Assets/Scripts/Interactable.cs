@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Interactable : MonoBehaviour
         nothing,
         pickup,
         info,
-        dialogue
+        dialogue,
+        goal
     }
     public interactTypes type;
 
@@ -24,6 +26,10 @@ public class Interactable : MonoBehaviour
     Inventory.itemTypes pickupType;
     [SerializeField]
     AnimationClip talkingAnimation;
+    [SerializeField]
+    AudioClip indicationSound;
+    [SerializeField]
+    AudioClip interactSound;
 
     [HideInInspector]
     public bool interacted;
@@ -33,6 +39,7 @@ public class Interactable : MonoBehaviour
     Dialogue dialogue;
     GlobalVariables vars;
     Animator anim;
+    AudioSource audioSource;
 
     void Start()
     {
@@ -41,6 +48,7 @@ public class Interactable : MonoBehaviour
         dialogue = FindObjectOfType<Dialogue>();
         inv = FindObjectOfType<Inventory>();
         info = FindObjectOfType<Info>();
+        audioSource = GetComponent<AudioSource>();
         interacted = false;
     }
 
@@ -59,6 +67,9 @@ public class Interactable : MonoBehaviour
                 break;
             case interactTypes.dialogue:
                 InteractDialogue();
+                break;
+            case interactTypes.goal:
+                InteractGoal();
                 break;
         }
     }
@@ -79,21 +90,22 @@ public class Interactable : MonoBehaviour
         if (!vars.canTalk) return;
         inv.AddItem(pickupType);
         info.Show("Picked up a " + pickupType + ".");
+        if (interactSound) audioSource.PlayOneShot(interactSound);
         interacted = true;
     }
     void InteractInfo()
     {
         if (!vars.canTalk) return;
         info.Show(infoText);
+        if (interactSound) audioSource.PlayOneShot(interactSound);
         interacted = true;
     }
     void InteractDialogue()
     {
         if (!vars.canTalk) return;
         dialogue.StartConversation(dialogueText, dialogueImage, this);
-        inv.AddItem(pickupType);
         anim.SetBool("Talking", true);
-        if (talkingAnimation) switch (talkingAnimation.name)
+        switch (talkingAnimation.name)
         {
             case "EdTalk":
                 anim.SetFloat("AnimID", 0);
@@ -110,11 +122,38 @@ public class Interactable : MonoBehaviour
             case "SamTalk":
                 anim.SetFloat("AnimID", 1);
                 break;
+            default:
+                anim.SetFloat("AnimID", 1.25f);
+                break;
         }
+        if (interactSound) audioSource.PlayOneShot(interactSound);
+    }
+    void InteractGoal()
+    {
+        SceneManager.LoadScene(1);
     }
 
     public void DialogueDone()
     {
+        inv.AddItem(pickupType);
         interacted = true;
+    }
+
+    public void IndicationSound()
+    {
+        if (indicationSound) audioSource.PlayOneShot(indicationSound);
+    }
+
+    public void Disable()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+    public void Enable()
+    {
+        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 }

@@ -28,9 +28,7 @@ public class InteractHandler : MonoBehaviour
             interactables.Add(transform.GetChild(i).GetComponent<Interactable>());
             if (i > 0)
             {
-                interactables[i].GetComponent<SpriteRenderer>().enabled = false;
-                interactables[i].GetComponent<BoxCollider2D>().enabled = false;
-                interactables[i].transform.GetChild(0).gameObject.SetActive(false);
+                interactables[i].Disable();
             }
         }
     }
@@ -41,7 +39,7 @@ public class InteractHandler : MonoBehaviour
         {
             if (state == interactables.Count - 1)
             {
-                if (interactables[state].type == Interactable.interactTypes.pickup) gameObject.SetActive(false);
+                if (interactables[state].type == Interactable.interactTypes.pickup) interactables[state].Disable();
                 return;
             }
 
@@ -51,13 +49,10 @@ public class InteractHandler : MonoBehaviour
                 if (itemConditions[state] != Inventory.itemTypes.nothing) return;
             }
 
-            interactables[state].GetComponent<SpriteRenderer>().enabled = false;
-            interactables[state].GetComponent<BoxCollider2D>().enabled = false;
-            interactables[state].transform.GetChild(0).gameObject.SetActive(false);
+            interactables[state].Disable();
             state++;
-            interactables[state].GetComponent<SpriteRenderer>().enabled = true;
-            interactables[state].GetComponent<BoxCollider2D>().enabled = true;
-            interactables[state].transform.GetChild(0).gameObject.SetActive(true);
+            interactables[state].Enable();
+            interactables[state].IndicationSound();
         }
     }
 }

@@ -50,7 +50,7 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = direction * speedMultiplier;
+        rb.velocity = direction.normalized * speedMultiplier;
     }
 
     void Animate()
