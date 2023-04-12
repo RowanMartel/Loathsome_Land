@@ -12,7 +12,10 @@ public class Inventory : MonoBehaviour
         plum,
         shrinkRay,
         hat,
-        hatInfo
+        hatInfo,
+        tinySydney,
+        harold2Info,
+        samEaten
     }
 
     List<itemTypes> inventory;

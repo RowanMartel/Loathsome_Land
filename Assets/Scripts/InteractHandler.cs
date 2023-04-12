@@ -9,6 +9,9 @@ public class InteractHandler : MonoBehaviour
     [Header("Each element represents the item needed to advance to the next object.")]
     [SerializeField]
     List<Inventory.itemTypes> itemConditions;
+    [Header("Each element represents if interaction with the player is required.")]
+    [SerializeField]
+    List<bool> advanceAutomatically;
 
     List<Interactable> interactables;
     int state;
@@ -16,6 +19,7 @@ public class InteractHandler : MonoBehaviour
 
     void Start()
     {
+        advanceAutomatically.Add(false); // Stops some bug from occurring I guess
         interactables = new List<Interactable>();
         inv = FindObjectOfType<Inventory>();
         state = 0;
@@ -33,7 +37,7 @@ public class InteractHandler : MonoBehaviour
 
     void Update()
     {
-        if (interactables[state].interacted)
+        if (interactables[state].interacted || advanceAutomatically[state])
         {
             if (state == interactables.Count - 1)
             {

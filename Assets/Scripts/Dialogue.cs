@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     Queue<string> dialogueText;
     GlobalVariables vars;
     float timer;
+    Interactable currentNPC;
 
     void Start()
     {
@@ -42,9 +43,10 @@ public class Dialogue : MonoBehaviour
         if (timer >= 0.1f) vars.canTalk = true;
     }
 
-    public void StartConversation(List<string> dialogueList, Sprite speaker)
+    public void StartConversation(List<string> dialogueList, Sprite speaker, Interactable interactable)
     {
         if (!vars.canTalk) return;
+        currentNPC = interactable;
         vars.talking = true;
         dialogueText.Clear();
         panel.enabled = true;
@@ -60,6 +62,7 @@ public class Dialogue : MonoBehaviour
         if (dialogueText.Count == 0)
         {
             Hide();
+            currentNPC.DialogueDone();
             return;
         }
         dialogueTmp.text = dialogueText.Dequeue();

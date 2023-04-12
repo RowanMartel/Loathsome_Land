@@ -90,10 +90,10 @@ public class Interactable : MonoBehaviour
     void InteractDialogue()
     {
         if (!vars.canTalk) return;
-        dialogue.StartConversation(dialogueText, dialogueImage);
+        dialogue.StartConversation(dialogueText, dialogueImage, this);
         inv.AddItem(pickupType);
         anim.SetBool("Talking", true);
-        switch (talkingAnimation.name)
+        if (talkingAnimation) switch (talkingAnimation.name)
         {
             case "EdTalk":
                 anim.SetFloat("AnimID", 0);
@@ -111,6 +111,10 @@ public class Interactable : MonoBehaviour
                 anim.SetFloat("AnimID", 1);
                 break;
         }
+    }
+
+    public void DialogueDone()
+    {
         interacted = true;
     }
 }

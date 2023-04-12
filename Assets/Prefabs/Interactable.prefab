@@ -113,6 +113,7 @@ MonoBehaviour:
   pickupType: 0
   talkingAnimation: {fileID: 0}
   interacted: 0
+  anim: {fileID: 6176553542391016364}
 --- !u!61 &888090102123475319
 BoxCollider2D:
   m_ObjectHideFlags: 0
